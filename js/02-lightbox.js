@@ -17,5 +17,7 @@ function createMarkup(arr) {
 }
 
 var lightbox = new SimpleLightbox('.gallery a', {
-	captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
+	captionsData: 'alt',
+	captionPosition: 'bottom',
+	captionDelay: 250
 });

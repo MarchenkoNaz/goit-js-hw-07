@@ -41,19 +41,22 @@ function onClick(evt) {
 	const instance = basicLightbox.create(`<img
 	class="gallery__image"
 	src="${source}"
-  />`);
-	instance.show()// opens modal window with the large photo
-	//#closing
-	galleryList.addEventListener("keydown", (evt) => {
-		if (evt.code === 'Escape') {
-			instance.close()
+  />`,
+		{
+			onShow: (instance) => {
+				document.addEventListener("keydown", onEsc);
+			},
+
+			onClose: (instance) => {
+				document.removeEventListener("keydown", onEsc);
+			},
 		}
-	})//closes modal window using Escape
-
-
+	);
+	instance.show();
+	function onEsc(event) {
+		const modal = document.querySelector(".basicLightbox");
+		if (event.key === "Escape" && modal) {
+			instance.close();
+		}
+	}
 }
-
-
-
-
-
